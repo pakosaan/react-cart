@@ -9,7 +9,7 @@ import {
 export const cartReducer = createReducer(
   {
     cartItems: [],
-    subToatal: 0,
+    subTotal: 0,
     shipping: 0,
     tax: 0,
     total: 0,
@@ -46,10 +46,10 @@ export const cartReducer = createReducer(
       .addCase(calculatePrice, (state) => {
         let sum = 0;
         state.cartItems.forEach((i) => (sum += i.price * i.quantity));
-        state.subToatal = sum;
-        state.shipping = state.subToatal > 1000 ? 0 : 200;
-        state.tax = +(state.subToatal * 0.18).toFixed();
-        state.total = state.subToatal + state.shipping + state.tax;
+        state.subTotal = sum;
+        state.shipping = state.subTotal > 1000 ? 0 : 200;
+        state.tax = +(state.subTotal * 0.18).toFixed();
+        state.total = state.subTotal + state.shipping + state.tax;
       });
   }
 );
